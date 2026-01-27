@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Visual Analytics Tool</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.arcgis.com/4.27/"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+         <div class="back">
+            <h1> Healthcare Visual Analytics Tool</h1>
+            <div class="subtitle">Interactive Dashboard for Medical Data Analysis</div>
+         </div>
+        </header>
+
+        <div class="file-upload">
+            <div class="status" id="status">Loading data from Data/healthcare_dataset.csv...</div>
+        </div>
+
+        <div id="mainDashboard" style="display: none;">
+            <div class="dashboard">
+                <div class="stats-panel" id="statsPanel"></div>
+                
+                 <div class="filter-panel">
+                    <div class="filter-group">
+                        <div class="filter-item">
+                            <label>Hospital Filter:</label>
+                            <select id="hospitalFilter">
+                                <option value="all">All Hospitals</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>Medical Condition:</label>
+                            <select id="conditionFilter">
+                                <option value="all">All Conditions</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>Age Group:</label>
+                            <select id="ageFilter">
+                                <option value="all">All Ages</option>
+                                <option value="0-18">0-18 years</option>
+                                <option value="19-40">19-40 years</option>
+                                <option value="41-65">41-65 years</option>
+                                <option value="65+">65+ years</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>Gender:</label>
+                            <select id="genderFilter">
+                                <option value="all">All Genders</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>Admission Type:</label>
+                            <select id="admissionFilter">
+                                <option value="all">All Types</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>Test Results:</label>
+                            <select id="testResultFilter">
+                                <option value="all">All Results</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Abnormal">Abnormal</option>
+                                <option value="Inconclusive">Inconclusive</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>Blood Type:</label>
+                            <select id="bloodTypeFilter">
+                                <option value="all">All Blood Types</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>Insurance Provider:</label>
+                            <select id="insuranceFilter">
+                                <option value="all">All Providers</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>&nbsp;</label>
+                            <button id="resetFilters" class="reset-btn">
+                                Reset All Filters
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash1">
+                <div class="chart-container">
+                    <div class="chart-title chart-title1">📊 Distribution of Test Results</div>
+                    <div id="testResultsChart" class="chart"></div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">🏥 Medical Conditions vs Test Results</div>
+                    <div id="conditionsChart" class="chart"></div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">👥 Patient Demographics</div>
+                    <div id="demographicsChart" class="chart"></div>
+                </div>
+                </div>
+                 <div class="dash2">
+                <div class="chart-container">
+                    <div class="chart-title">💰 Billing Amount Analysis</div>
+                    <div id="billingChart" class="chart"></div>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-title">🔍 Correlation Matrixe</div>
+                    <div id="correlationChart"></div>
+                </div>
+                </div>
+
+                <div class="dash3">
+                <div class="chart-container">
+                    <div class="chart-title">📅 Medical Condition vs Length of Stay</div>
+                    <div id="conditionStayChart" class="chart"></div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">🩺 Admission Type Distribution</div>
+                    <div id="admissionTypePieChart" class="chart"></div>
+                </div>
+                </div>
+                <div class="map-container">
+                    <div class="chart-title"> 🗺️ Hospital Locations Map</div>
+                    <div id="viewDiv"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+    <script src="script.js"></script>
+</body>
+</html>
